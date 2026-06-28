@@ -4,1435 +4,690 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohith Dande - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
-        }
-
-        /* Animations */
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fade-in-down {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fade-in 0.8s ease-out;
-        }
-
-        .animate-fade-in-down {
-            animation: fade-in-down 0.8s ease-out;
-        }
-
-        .animate-fade-in-up {
-            animation: fade-in-up 0.8s ease-out;
-        }
-
-        .animate-bounce {
-            animation: bounce 2s infinite;
-        }
-
-        .delay-100 {
-            animation-delay: 0.1s;
-            animation-fill-mode: both;
-        }
-
-        .delay-200 {
-            animation-delay: 0.2s;
-            animation-fill-mode: both;
-        }
-
-        .delay-300 {
-            animation-delay: 0.3s;
-            animation-fill-mode: both;
-        }
-
-        /* Custom Styles */
-        .header-scrolled {
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            font-size: 1.125rem;
-            font-weight: 500;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background-color: #3b82f6;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid #3b82f6;
-            color: #3b82f6;
-        }
-
-        .btn-outline:hover {
-            background-color: #3b82f6;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .card {
-            background-color: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: #3b82f6;
-            transform: scale(1.05);
-        }
-
-        .skill-card {
-            background-color: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            border-color: #3b82f6;
-            transform: scale(1.05);
-        }
-
-        .badge {
-            background-color: #0f0f0f;
-            color: #a3a3a3;
-            border: 1px solid #2a2a2a;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            display: inline-block;
-            margin: 0.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .badge:hover {
-            background-color: #3b82f6;
-            color: white;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 0.5rem;
-            color: white;
-            font-size: 1rem;
-        }
-
-        input:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-
-        .section-divider {
-            height: 4px;
-            width: 80px;
-            background-color: #3b82f6;
-            margin: 1rem auto;
-            border-radius: 2px;
-        }
-
-        .social-icon {
-            padding: 0.75rem;
-            background-color: #1e1e1e;
-            color: #a3a3a3;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .social-icon:hover {
-            background-color: #2a2a2a;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .mobile-menu {
-            display: none;
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .desktop-nav {
-                display: none;
-            }
-        }
-
-        /* Toast notification */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: #1a1a1a;
-            border: 1px solid #3b82f6;
-            border-radius: 0.5rem;
-            padding: 1rem 1.5rem;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            animation: fade-in-up 0.3s ease-out;
-        }
-    </style>
+    <title>Mohith Dande | Portfolio</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Portfolio of Mohith Dande, B.Tech CSE Cyber Security student at Amrita Vishwa Vidyapeetham. Showcasing AI, ML, Cybersecurity, and Web Development projects.">
+    <meta name="keywords" content="Mohith Dande, Portfolio, Cyber Security, Machine Learning, AI Engineer, Amrita Vishwa Vidyapeetham, Python, Flask">
+    <meta name="author" content="Mohith Dande">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-    <!-- Header -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="#hero" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">
-                    Mohith Dande
+    <!-- Interactive Background Particles -->
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="site-wrapper">
+        <!-- Navigation Header -->
+        <header class="header">
+            <div class="container nav-container">
+                <a href="#hero" class="logo">
+                    <span>&lt;</span>Mohith Dande<span>/&gt;</span>
                 </a>
-
-                <!-- Desktop Navigation -->
-                <div class="desktop-nav hidden md:flex items-center gap-8">
-                    <a href="#about"
-                        class="text-gray-400 hover:text-white transition-colors text-sm font-medium">About</a>
-                    <a href="#skills"
-                        class="text-gray-400 hover:text-white transition-colors text-sm font-medium">Skills</a>
-                    <a href="#projects"
-                        class="text-gray-400 hover:text-white transition-colors text-sm font-medium">Projects</a>
-                    <a href="#github-stats"
-                        class="text-gray-400 hover:text-white transition-colors text-sm font-medium">GitHub Stats</a>
-                    <a href="#achievements"
-                        class="text-gray-400 hover:text-white transition-colors text-sm font-medium">Achievements</a>
-                    <a href="#contact"
-                        class="text-gray-400 hover:text-white transition-colors text-sm font-medium">Contact</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-white">
-                    <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
+                
+                <nav class="nav-links">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#achievements" class="nav-link">Achievements</a>
+                    <a href="#github" class="nav-link">GitHub Stats</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                
+                <button id="menu-btn" class="menu-btn" aria-label="Toggle menu">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <line x1="3" y1="18" x2="21" y2="18"></line>
                     </svg>
                 </button>
             </div>
-
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="mobile-menu mt-4 py-4 border-t border-gray-800">
-                <a href="#about" class="block py-2 text-gray-400 hover:text-white transition-colors">About</a>
-                <a href="#skills" class="block py-2 text-gray-400 hover:text-white transition-colors">Skills</a>
-                <a href="#projects" class="block py-2 text-gray-400 hover:text-white transition-colors">Projects</a>
-                <a href="#github-stats" class="block py-2 text-gray-400 hover:text-white transition-colors">GitHub
-                    Stats</a>
-                <a href="#achievements"
-                    class="block py-2 text-gray-400 hover:text-white transition-colors">Achievements</a>
-                <a href="#contact" class="block py-2 text-gray-400 hover:text-white transition-colors">Contact</a>
+            
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-nav" class="mobile-nav">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#github" class="nav-link">GitHub Stats</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-        </nav>
-    </header>
+        </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center relative pt-20">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center">
-                <!-- Animated greeting -->
-                <div class="mb-6 animate-fade-in-down">
-                    <span class="text-blue-400 text-lg font-medium">Hello, I'm</span>
-                </div>
-
-                <!-- Name -->
-                <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 animate-fade-in">
-                    Mohith Dande
-                </h1>
-
-                <!-- Tagline with Typing SVG -->
-                <div class="mb-8 flex justify-center animate-fade-in-up">
-                    <img class="max-w-full"
-                        src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&duration=3000&pause=1000&center=true&vCenter=true&width=700&lines=CSE+Cyber+Security+Student;Machine+Learning+Enthusiast;Building+AI+Projects;Future+AI+Engineer"
-                        alt="Mohith Dande Typing SVG" />
-                </div>
-
-                <!-- Description -->
-                <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in-up delay-100">
-                    B.Tech CSE Cyber Security Student at Amrita Vishwa Vidyapeetham, Amritapuri, Kerala | AI & ML
-                    Enthusiast | Future AI
-                    Engineer
-                </p>
-
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-up delay-200">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
-                </div>
-
-                <!-- Social Links -->
-                <div class="flex justify-center gap-4 animate-fade-in-up delay-300">
-                    <a href="https://github.com/Mohith1-stack" target="_blank" rel="noopener noreferrer"
-                        class="social-icon">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207
-                                11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729
-                                1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304
-                                3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931
-                                0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301
-                                1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23
-                                3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807
-                                5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589
-                                8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/mohith-dande-01b58a371/" target="_blank" rel="noopener
-                        noreferrer" class="social-icon">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239
-                                5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966
-                                0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75
-                                1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586
-                                7-2.777 7 2.476v6.759z" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg width="32" height="32" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-[#0f0f0f]">
-        <div class="container mx-auto px-6">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">About Me</h2>
-                <div class="section-divider"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch max-w-6xl mx-auto">
-                <!-- About Me Content -->
-                <div class="card flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-2xl font-bold text-blue-400 mb-6">
-                            Profile Highlights
-                        </h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 mt-1 text-lg">✦</span>
-                                <p class="text-gray-300 text-lg leading-relaxed">
-                                    Cyber Security Student at <strong>Amrita Vishwa Vidyapeetham, Amritapuri,
-                                        Kerala</strong>
-                                </p>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 mt-1 text-lg">✦</span>
-                                <p class="text-gray-300 text-lg leading-relaxed">
-                                    Passionate about AI, ML and Security
-                                </p>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 mt-1 text-lg">✦</span>
-                                <p class="text-gray-300 text-lg leading-relaxed">
-                                    Building real-world projects using Python and Flask
-                                </p>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 mt-1 text-lg">✦</span>
-                                <p class="text-gray-300 text-lg leading-relaxed">
-                                    Interested in Agentic AI and Automation
-                                </p>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 mt-1 text-lg">✦</span>
-                                <p class="text-gray-300 text-lg leading-relaxed">
-                                    Currently learning Advanced Machine Learning
-                                </p>
-                            </li>
-                        </ul>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="hero-tag">
+                        <span></span>Hello, I'm
                     </div>
-                    <div class="mt-8 pt-6 border-t border-gray-800 flex items-center gap-4 text-sm text-gray-500">
-                        <span>📍 Location: India</span>
-                        <span>🎯 Goal: AI Engineer</span>
+                    <h1 class="hero-title">
+                        Mohith Dande
+                    </h1>
+                    
+                    <!-- Dynamic Typing SVG -->
+                    <div class="hero-typing">
+                        <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&duration=3000&pause=1000&center=false&vCenter=true&width=500&lines=CSE+Cyber+Security+Student;Machine+Learning+Enthusiast;Building+AI+Projects;Future+AI+Engineer"
+                            alt="Mohith Dande Typing SVG" />
+                    </div>
+                    
+                    <p class="hero-desc">
+                        B.Tech CSE Cyber Security student at Amrita Vishwa Vidyapeetham, Amritapuri, Kerala. Passionate about machine learning pipelines, secure web applications, and building automation.
+                    </p>
+                    
+                    <div class="btn-group">
+                        <a href="#projects" class="btn btn-primary">Explore Projects</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                     </div>
                 </div>
-
-                <!-- Python Profile Editor -->
-                <div
-                    class="relative bg-[#0d1117] rounded-xl overflow-hidden border border-gray-800 shadow-2xl font-mono text-xs md:text-sm leading-relaxed p-4 md:p-6 text-gray-300 flex flex-col justify-between">
-                    <!-- Window top bar -->
-                    <div class="flex items-center justify-between pb-4 border-b border-gray-800 mb-4 flex-shrink-0">
-                        <div class="flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
-                            <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
-                            <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                
+                <!-- Interactive Shell Terminal mockup -->
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="terminal-btn red"></span>
+                            <span class="terminal-btn yellow"></span>
+                            <span class="terminal-btn green"></span>
                         </div>
-                        <span class="text-xs text-gray-500">~/mohith/profile.py</span>
-                        <div class="w-12"></div>
+                        <div class="terminal-title">dande@mohith:~</div>
+                        <div style="width: 36px;"></div>
                     </div>
-                    <!-- Code display -->
-                    <div class="flex gap-4 overflow-y-auto max-h-[350px]">
-                        <!-- Line numbers -->
-                        <div class="text-gray-600 select-none text-right flex-shrink-0">
-                            <div>1</div>
-                            <div>2</div>
-                            <div>3</div>
-                            <div>4</div>
-                            <div>5</div>
-                            <div>6</div>
-                            <div>7</div>
-                            <div>8</div>
-                            <div>9</div>
-                            <div>10</div>
-                            <div>11</div>
-                            <div>12</div>
-                            <div>13</div>
-                            <div>14</div>
-                            <div>15</div>
-                            <div>16</div>
-                            <div>17</div>
-                            <div>18</div>
-                            <div>19</div>
-                            <div>20</div>
-                            <div>21</div>
-                            <div>22</div>
-                            <div>23</div>
-                            <div>24</div>
-                            <div>25</div>
-                            <div>26</div>
-                            <div>27</div>
-                            <div>28</div>
-                            <div>29</div>
-                            <div>30</div>
-                            <div>31</div>
-                        </div>
-                        <!-- Code lines with styling -->
-                        <div class="overflow-x-auto w-full">
-                            <span class="text-purple-400">class</span> <span
-                                class="text-yellow-300 font-bold">MohithDande</span>:<br>
-                            <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;name = <span class="text-green-300">"Mohith Dande"</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;degree = <span class="text-green-300">"B.Tech CSE Cyber
-                                Security"</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;university = <span class="text-green-300">"Amrita Vishwa
-                                Vidyapeetham"</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;location = <span class="text-green-300">"India"</span><br>
-                            <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;skills = [<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-green-300">"Python"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-300">"Machine
-                                Learning"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-green-300">"Flask"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-green-300">"Firebase"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-green-300">"Git"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-green-300">"HTML"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-green-300">"CSS"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-green-300">"JavaScript"</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;]<br>
-                            <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;current_projects = [<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-300">"Laser Home
-                                Security System"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-300">"Student
-                                Management System"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-300">"Netflix
-                                Recommendation System"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-300">"AI Student
-                                Placement Predictor"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-300">"SkillBridge
-                                AI"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-300">"Spotify
-                                Clone"</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;]<br>
-                            <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;goal = <span class="text-green-300">"Become an AI Engineer"</span>
+                    <div class="terminal-menu-tabs">
+                        <span class="terminal-tab active" data-cmd="about">about.sh</span>
+                        <span class="terminal-tab" data-cmd="skills">skills.sh</span>
+                        <span class="terminal-tab" data-cmd="projects">projects.sh</span>
+                        <span class="terminal-tab" data-cmd="contact">contact.sh</span>
+                    </div>
+                    <div id="terminal-body" class="terminal-body">
+                        <!-- Boot message and default about output will print here -->
+                    </div>
+                    <div class="terminal-header" style="border-top: 1px solid #1e293b; border-bottom: none; padding: 0.5rem 1rem;">
+                        <div class="terminal-input-line" style="width: 100%; margin-top: 0;">
+                            <span class="terminal-prompt">dande@mohith:~$</span>
+                            <input type="text" id="terminal-input" class="terminal-input" placeholder="type 'help' or click tabs..." autofocus autocomplete="off">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 bg-[#0a0a0a]">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Technical Skills</h2>
-                <div class="section-divider"></div>
-            </div>
-
-            <!-- Skills Grid -->
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- AI & Machine Learning -->
-                <div class="skill-card flex flex-col justify-between h-full">
-                    <div>
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="p-2 bg-gray-800 rounded-lg">
-                                <span class="text-2xl">🤖</span>
+        <!-- About Me Section -->
+        <section id="about">
+            <div class="container">
+                <div class="section-title-wrapper fade-in-scroll">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-desc">Cyber Security student with a deep passion for Artificial Intelligence, Machine Learning, and secure software development.</p>
+                </div>
+                
+                <div class="about-grid">
+                    <!-- Left: Profile cards -->
+                    <div class="glass-panel about-card fade-in-scroll">
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent-cyan);">Profile Highlights</h3>
+                            <div class="highlight-list">
+                                <div class="highlight-item">
+                                    <span class="highlight-icon">✦</span>
+                                    <p class="highlight-text">Studying <strong>Cyber Security</strong> at Amrita Vishwa Vidyapeetham, Kerala.</p>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-icon">✦</span>
+                                    <p class="highlight-text">Developing end-to-end Machine Learning pipelines and AI-driven platforms.</p>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-icon">✦</span>
+                                    <p class="highlight-text">Building full-stack projects using Python, Flask, SQLite, and MERN ecosystems.</p>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-icon">✦</span>
+                                    <p class="highlight-text">Active interest in automation, Agentic AI, and secure network infrastructure.</p>
+                                </div>
                             </div>
-                            <h3 class="text-xl font-bold text-white">AI & Machine Learning</h3>
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"
-                                alt="Python Badge" />
-                            <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white"
-                                alt="Scikit-Learn Badge" />
-                            <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"
-                                alt="Pandas Badge" />
-                            <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"
-                                alt="NumPy Badge" />
-                            <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white"
-                                alt="Jupyter Badge" />
+                        
+                        <div class="about-footer">
+                            <span>📍 <strong>Location:</strong> India</span>
+                            <span>🎯 <strong>Goal:</strong> AI & Security Engineer</span>
                         </div>
                     </div>
-                    <div class="pt-4 border-t border-gray-800 text-sm text-gray-400 font-mono">
-                        <span class="block mb-1">`Machine Learning` • `Prediction Models`</span>
-                        <span class="block mb-1">`EDA` • `Feature Engineering`</span>
-                        <span class="block">`Model Evaluation`</span>
-                    </div>
-                </div>
-
-                <!-- Backend & Databases -->
-                <div class="skill-card flex flex-col justify-between h-full">
-                    <div>
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="p-2 bg-gray-800 rounded-lg">
-                                <span class="text-2xl">⚙️</span>
+                    
+                    <!-- Right: Editor mockup -->
+                    <div class="code-editor-mock fade-in-scroll" style="animation-delay: 0.15s;">
+                        <div class="editor-titlebar">
+                            <span style="display: flex; gap: 0.35rem; align-items: center;">
+                                <span style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span>
+                                <span style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b;"></span>
+                                <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span>
+                            </span>
+                            <span>~/mohith/profile.py</span>
+                            <span style="width: 20px;"></span>
+                        </div>
+                        <div class="editor-window">
+                            <div class="line-numbers">
+                                <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
                             </div>
-                            <h3 class="text-xl font-bold text-white">Backend & Databases</h3>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white"
-                                alt="Flask Badge" />
-                            <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black"
-                                alt="Firebase Badge" />
-                            <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white"
-                                alt="SQLite Badge" />
-                            <img src="https://img.shields.io/badge/REST_API-02569B?style=for-the-badge"
-                                alt="REST API Badge" />
-                            <img src="https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge"
-                                alt="SQLAlchemy Badge" />
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-gray-800 text-sm text-gray-400 font-mono">
-                        <span class="block mb-1">`Authentication` • `Dashboard Systems`</span>
-                        <span class="block">`API Development` • `Database Design`</span>
-                    </div>
-                </div>
-
-                <!-- Tools & Frontend -->
-                <div class="skill-card flex flex-col justify-between h-full">
-                    <div>
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="p-2 bg-gray-800 rounded-lg">
-                                <span class="text-2xl">🛠️</span>
+                            <div class="editor-content">
+                                <span class="keyword">class</span> <span class="class-name">MohithDande</span>:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;name = <span class="string">"Mohith Dande"</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;role = <span class="string">"AI & Cyber Security Student"</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;education = <span class="string">"Amrita Vishwa Vidyapeetham"</span><br>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;skills = [<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Python"</span>, <span class="string">"Machine Learning"</span>,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Flask"</span>, <span class="string">"SQLite"</span>, <span class="string">"Firebase"</span>,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"React"</span>, <span class="string">"Node.js"</span>, <span class="string">"MongoDB"</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;]<br>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;interests = [<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Explainable AI"</span>, <span class="string">"Secure APIs"</span>,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Risk Detection"</span>, <span class="string">"Automation"</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;]<br>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="class-name">get_status</span>(self):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">"Actively building cyber-physical projects."</span>
                             </div>
-                            <h3 class="text-xl font-bold text-white">Tools & Frontend</h3>
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"
-                                alt="Git Badge" />
-                            <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"
-                                alt="GitHub Badge" />
-                            <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
-                                alt="HTML5 Badge" />
-                            <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"
-                                alt="CSS3 Badge" />
-                            <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
-                                alt="JavaScript Badge" />
-                            <img src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white"
-                                alt="VS Code Badge" />
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-gray-800 text-sm text-gray-400 font-mono">
-                        <span class="block mb-1">`Version Control` • `Deployment`</span>
-                        <span class="block">`Responsive UI` • `Web Development`</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-[#0f0f0f]">
-        <div class="container mx-auto px-6">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Projects</h2>
-                <div class="section-divider"></div>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto mt-6">
-                    A showcase of my projects in AI/ML, Cybersecurity, and Full-Stack Web Development.
-                </p>
-            </div>
-
-            <!-- Projects Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                <!-- Project 1: AI Student Placement Predictor -->
-                <div
-                    class="card flex flex-col justify-between h-full hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span
-                                class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-800">AI
-                                / ML</span>
-                            <span class="text-sm text-gray-500 font-mono">Random Forest</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">AI Student Placement Predictor</h3>
-                        <p class="text-blue-300 text-sm italic mb-4">"Predict placement success with Explainable AI."
-                        </p>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            End-to-end Machine Learning platform that evaluates academics, communication skills,
-                            internships, projects, and cognitive ability to estimate placement probability.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Python</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Flask</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Scikit-Learn</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Chart.js</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                        <span class="text-xs text-gray-500">📊 XAI Dashboard | 10k+ Records</span>
-                        <a href="https://github.com/Mohith1-stack/AI-Student-Placement-Predictor" target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-1 bg-[#181717] hover:bg-gray-800 text-white font-semibold text-xs py-2 px-3 rounded border border-gray-700 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                            View Repo
-                        </a>
-                    </div>
+        <!-- Technical Skills Section -->
+        <section id="skills" style="background: rgba(3, 7, 18, 0.5);">
+            <div class="container">
+                <div class="section-title-wrapper fade-in-scroll">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <p class="section-desc">My development capabilities categorized by technology domains and specialties.</p>
                 </div>
-
-                <!-- Project 2: Netflix Recommendation System -->
-                <div
-                    class="card flex flex-col justify-between h-full hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span
-                                class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-800">AI
-                                / NLP</span>
-                            <span class="text-sm text-gray-500 font-mono">TF-IDF & Cosine</span>
+                
+                <div class="skills-grid">
+                    <!-- AI & Machine Learning -->
+                    <div class="glass-panel skill-category fade-in-scroll">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon">🤖</div>
+                            <h3 class="skill-category-title">AI & Machine Learning</h3>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Netflix Recommendation System</h3>
-                        <p class="text-blue-300 text-sm italic mb-4">"Discover your next favorite movie instantly."</p>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            AI-powered recommendation engine using TF-IDF Vectorization and Cosine Similarity with TMDB
-                            API integration.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Python</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Flask</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Scikit-Learn</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">JavaScript</span>
+                        <div class="skill-badges">
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python"> Python</span>
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat&logo=scikitlearn&logoColor=white" alt="Scikit-Learn"> Scikit-Learn</span>
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="Pandas"> Pandas</span>
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white" alt="NumPy"> NumPy</span>
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white" alt="Jupyter"> Jupyter</span>
+                        </div>
+                        <div class="skill-bullets">
+                            <span class="skill-bullet-item">◇ Predictive Analytics Pipelines</span>
+                            <span class="skill-bullet-item">◇ Feature Engineering & Selection</span>
+                            <span class="skill-bullet-item">◇ Explainable AI (XAI) Dashboards</span>
                         </div>
                     </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                        <span class="text-xs text-gray-500">🎥 TMDB API | Content Based</span>
-                        <a href="https://github.com/Mohith1-stack/Netflix-Recommendation-System" target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-1 bg-[#181717] hover:bg-gray-800 text-white font-semibold text-xs py-2 px-3 rounded border border-gray-700 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                            View Repo
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3: Guardian Path -->
-                <div
-                    class="card flex flex-col justify-between h-full hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span
-                                class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-800">Mobile
-                                / Android</span>
-                            <span class="text-sm text-gray-500 font-mono">Kotlin & OSRM</span>
+                    
+                    <!-- Backend & Databases -->
+                    <div class="glass-panel skill-category fade-in-scroll" style="animation-delay: 0.1s;">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon">⚙️</div>
+                            <h3 class="skill-category-title">Backend & Databases</h3>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Guardian Path</h3>
-                        <p class="text-blue-300 text-sm italic mb-4">"Navigation that prioritizes safety over speed."
-                        </p>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            AI-powered safety-first navigation platform featuring an intelligent Night Agent that
-                            analyzes risk zones and provides safer routes.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Kotlin</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Google
-                                Maps API</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">OSRM</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Android</span>
+                        <div class="skill-badges">
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" alt="Flask"> Flask</span>
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=firebase&logoColor=black" alt="Firebase"> Firebase</span>
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white" alt="SQLite"> SQLite</span>
+                            <span class="skill-badge">SQLAlchemy</span>
+                            <span class="skill-badge">REST APIs</span>
+                        </div>
+                        <div class="skill-bullets">
+                            <span class="skill-bullet-item">◇ Authentication Checkpoints & JWT</span>
+                            <span class="skill-bullet-item">◇ Relational Database Orchestration</span>
+                            <span class="skill-bullet-item">◇ Secure Backend API Endpoints</span>
                         </div>
                     </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                        <span class="text-xs text-gray-500">🌙 Night Agent | Risk Detection</span>
-                        <a href="https://github.com/Mohith1-stack/Code-Chaos" target="_blank" rel="noopener noreferrer"
-                            class="inline-flex items-center gap-1 bg-[#181717] hover:bg-gray-800 text-white font-semibold text-xs py-2 px-3 rounded border border-gray-700 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                            View Repo
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4: TechBuddies Student Management -->
-                <div
-                    class="card flex flex-col justify-between h-full hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span
-                                class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-800">Web
-                                App</span>
-                            <span class="text-sm text-gray-500 font-mono">SQLite & SQLAlchemy</span>
+                    
+                    <!-- Tools & Full Stack -->
+                    <div class="glass-panel skill-category fade-in-scroll" style="animation-delay: 0.2s;">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon">🛠️</div>
+                            <h3 class="skill-category-title">Tools & Full Stack</h3>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">TechBuddies Student Management</h3>
-                        <p class="text-blue-300 text-sm italic mb-4">"Managing students, attendance and analytics
-                            seamlessly."</p>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            Full-stack Student Management System featuring authentication, attendance tracking,
-                            dashboard analytics, search functionality and exports.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Python</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Flask</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">SQLite</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">HTML/CSS</span>
+                        <div class="skill-badges">
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" alt="Git"> Git</span>
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub"> GitHub</span>
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5"> HTML5</span>
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3"> CSS3</span>
+                            <span class="skill-badge"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JS"> JS</span>
+                            <span class="skill-badge">React.js</span>
+                            <span class="skill-badge">Node.js</span>
                         </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                        <span class="text-xs text-gray-500">📚 Attendance System | Analytics</span>
-                        <a href="https://github.com/Mohith1-stack/TechBuddies" target="_blank" rel="noopener noreferrer"
-                            class="inline-flex items-center gap-1 bg-[#181717] hover:bg-gray-800 text-white font-semibold text-xs py-2 px-3 rounded border border-gray-700 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                            View Repo
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 5: AI Loan Approval Prediction -->
-                <div
-                    class="card flex flex-col justify-between h-full hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span
-                                class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-800">AI
-                                / ML</span>
-                            <span class="text-sm text-gray-500 font-mono">Streamlit & Scikit</span>
+                        <div class="skill-bullets">
+                            <span class="skill-bullet-item">◇ Version Control & Collaborative Git</span>
+                            <span class="skill-bullet-item">◇ Responsive Interactive Layouts</span>
+                            <span class="skill-bullet-item">◇ Full-Stack Application Design</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">AI Loan Approval Prediction</h3>
-                        <p class="text-blue-300 text-sm italic mb-4">"Helping financial institutions make smarter
-                            decisions."</p>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            Machine Learning powered loan approval prediction system that evaluates applicant profiles
-                            and estimates approval probability.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Python</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Scikit-Learn</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Pandas</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Streamlit</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                        <span class="text-xs text-gray-500">🏦 Risk Analysis | ML Pipeline</span>
-                        <a href="https://github.com/Mohith1-stack/AI-Loan-Approval-Prediction" target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-1 bg-[#181717] hover:bg-gray-800 text-white font-semibold text-xs py-2 px-3 rounded border border-gray-700 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                            View Repo
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 6: CivicSense-AI -->
-                <div
-                    class="card flex flex-col justify-between h-full hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span
-                                class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-800">AI
-                                / Civic Tech</span>
-                            <span class="text-sm text-gray-500 font-mono">Flask & ML</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">CivicSense-AI</h3>
-                        <p class="text-blue-300 text-sm italic mb-4">"Empowering citizens through AI-driven civic
-                            intelligence."</p>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            AI-powered civic engagement platform designed to help citizens report, track and analyze
-                            public issues. Features issue categorization, community reporting, and AI-powered insights.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Python</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Flask</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">JavaScript</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">HTML/CSS</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                        <span class="text-xs text-gray-500">🏙️ Smart Governance | Citizen App</span>
-                        <a href="https://github.com/Mohith1-stack/CivicSense-AI" target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-1 bg-[#181717] hover:bg-gray-800 text-white font-semibold text-xs py-2 px-3 rounded border border-gray-700 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                            View Repo
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 7: SkillBridge AI -->
-                <div
-                    class="card flex flex-col justify-between h-full hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span
-                                class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-800">AI
-                                / SAAS</span>
-                            <span class="text-sm text-gray-500 font-mono">MERN & AI</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">SkillBridge AI</h3>
-                        <p class="text-blue-300 text-sm italic mb-4">"Connecting freelancers and clients with
-                            intelligent AI."</p>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            AI-powered freelance marketplace featuring ATS resume analysis, smart freelancer
-                            recommendations, secure payments, project management, messaging, and role-based dashboards.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">React</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Node.js</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">MongoDB</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Express</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">OpenAI</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Stripe</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                        <span class="text-xs text-gray-500">💼 ATS Resume | AI Matching</span>
-                        <a href="https://github.com/Mohith1-stack/AI-Powered-Freelance-Marketplace" target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-1 bg-[#181717] hover:bg-gray-800 text-white font-semibold text-xs py-2 px-3 rounded border border-gray-700 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                            View Repo
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 8: Spotify Clone -->
-                <div
-                    class="card flex flex-col justify-between h-full hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span
-                                class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-800">FULL
-                                STACK</span>
-                            <span class="text-sm text-gray-500 font-mono">MERN & Audio</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Spotify Clone</h3>
-                        <p class="text-blue-300 text-sm italic mb-4">"Your music, playlists, and artists—all in one
-                            place."</p>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            Spotify-inspired music streaming platform with authentication, playlist management, search,
-                            favorites, responsive audio player, and admin dashboard for managing songs and albums.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">React</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Node.js</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">MongoDB</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Express</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">JWT</span>
-                            <span
-                                class="text-xs bg-gray-905 border border-gray-800 text-gray-400 px-2 py-1 rounded">Cloudinary</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                        <span class="text-xs text-gray-500">🎵 Music Streaming | Playlists</span>
-                        <a href="https://github.com/Mohith1-stack/Spotify-Clone" target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-1 bg-[#181717] hover:bg-gray-800 text-white font-semibold text-xs py-2 px-3 rounded border border-gray-700 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                            View Repo
-                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Achievements Section -->
-    <section id="achievements" class="py-24 bg-[#0a0a0a]">
-        <div class="container mx-auto px-6">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Achievements</h2>
-                <div class="section-divider"></div>
-            </div>
-
-            <!-- Achievements Grid -->
-            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <!-- Python Basics -->
-                <div class="card p-8">
-                    <div class="flex items-start gap-4">
-                        <div class="p-3 bg-gray-800 rounded-lg flex-shrink-0">
-                            <svg width="32" height="32" fill="none" stroke="#60a5fa" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="8" r="7"></circle>
-                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                            </svg>
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <div class="section-title-wrapper fade-in-scroll">
+                    <h2 class="section-title">Projects</h2>
+                    <p class="section-desc">A gallery of academic and personal projects in AI, Full-Stack and Security.</p>
+                </div>
+                
+                <!-- Filter Tabs -->
+                <div class="projects-filter-bar fade-in-scroll">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="ai-ml">AI & ML</button>
+                    <button class="filter-btn" data-filter="fullstack">Full Stack & Web</button>
+                    <button class="filter-btn" data-filter="cyber-mobile">Mobile & Security</button>
+                </div>
+                
+                <!-- Grid list -->
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="placement-predictor">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">AI / ML</span>
+                                <span class="project-sub">Random Forest</span>
+                            </div>
+                            <h3 class="project-title">AI Student Placement Predictor</h3>
+                            <p class="project-slogan">"Predict placement success with Explainable AI."</p>
+                            <p class="project-desc">Machine Learning platform evaluating academics, internships, logic tests, and communication ratings to project placement chances.</p>
+                            <div class="project-tags">
+                                <span class="project-tech-badge">Python</span>
+                                <span class="project-tech-badge">Flask</span>
+                                <span class="project-tech-badge">Scikit-Learn</span>
+                                <span class="project-tech-badge">Chart.js</span>
+                            </div>
                         </div>
-                        <div class="flex-1">
-                            <h3 class="text-xl font-bold text-white mb-2">Python Basics</h3>
-                            <p class="text-gray-400 mb-4">HackerRank Certificate</p>
-                            <a href="https://www.hackerrank.com/certificates/60427d611f8e?utm_medium=email&utm_source=mail_template_1393&utm_campaign=hrc_skills_certificate"
-                                target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2
-                                bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm
-                                transition-colors">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                View Certificate
+                        <div class="project-footer">
+                            <span class="project-info-stat">📊 XAI Dashboard | 10k+ Records</span>
+                            <a href="https://github.com/Mohith1-stack/AI-Student-Placement-Predictor" target="_blank" class="project-link-btn">
+                                Repo ➜
                             </a>
                         </div>
                     </div>
-                </div>
-
-                <!-- Programming Basics -->
-                <div class="card p-8">
-                    <div class="flex items-start gap-4">
-                        <div class="p-3 bg-gray-800 rounded-lg flex-shrink-0">
-                            <svg width="32" height="32" fill="none" stroke="#60a5fa" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="8" r="7"></circle>
-                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                            </svg>
+                    
+                    <!-- Project 2 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="netflix-recommendation" style="animation-delay: 0.1s;">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">AI / NLP</span>
+                                <span class="project-sub">TF-IDF & Cosine</span>
+                            </div>
+                            <h3 class="project-title">Netflix Recommendation System</h3>
+                            <p class="project-slogan">"Discover your next favorite movie instantly."</p>
+                            <p class="project-desc">AI recommendation algorithm applying content vectorization, plot analysis, and semantic similarities with TMDB API integration.</p>
+                            <div class="project-tags">
+                                <span class="project-tech-badge">Python</span>
+                                <span class="project-tech-badge">Flask</span>
+                                <span class="project-tech-badge">Scikit-Learn</span>
+                                <span class="project-tech-badge">TMDB API</span>
+                            </div>
                         </div>
-                        <div class="flex-1">
-                            <h3 class="text-xl font-bold text-white mb-2">Programming Basics</h3>
-                            <p class="text-gray-400 mb-4">HackerRank Certificate</p>
-                            <a href="https://www.hackerrank.com/certificates/281d01e8693b" target="_blank"
-                                rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-blue-600
-                                hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                View Certificate
+                        <div class="project-footer">
+                            <span class="project-info-stat">🎥 TMDB API | Content Based</span>
+                            <a href="https://github.com/Mohith1-stack/Netflix-Recommendation-System" target="_blank" class="project-link-btn">
+                                Repo ➜
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="cyber-mobile" data-project-id="guardian-path" style="animation-delay: 0.2s;">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">Mobile / Security</span>
+                                <span class="project-sub">Kotlin & OSRM</span>
+                            </div>
+                            <h3 class="project-title">Guardian Path</h3>
+                            <p class="project-slogan">"Navigation that prioritizes safety over speed."</p>
+                            <p class="project-desc">Safety-oriented map app containing an active Night Agent model assessing street lighting, crime records, and emergency alerts.</p>
+                            <div class="project-tags">
+                                <span class="project-tech-badge">Kotlin</span>
+                                <span class="project-tech-badge">Android</span>
+                                <span class="project-tech-badge">OSRM</span>
+                                <span class="project-tech-badge">Maps API</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-info-stat">🌙 Night Agent | Risk Detection</span>
+                            <a href="https://github.com/Mohith1-stack/Code-Chaos" target="_blank" class="project-link-btn">
+                                Repo ➜
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="techbuddies">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">Web App</span>
+                                <span class="project-sub">SQLite & SQLA</span>
+                            </div>
+                            <h3 class="project-title">TechBuddies Portal</h3>
+                            <p class="project-slogan">"Managing students, attendance and analytics seamlessly."</p>
+                            <p class="project-desc">Administration portal handling instructor sessions, student logs, daily checklists, CSV/PDF reports, and risk stats.</p>
+                            <div class="project-tags">
+                                <span class="project-tech-badge">Flask</span>
+                                <span class="project-tech-badge">SQLAlchemy</span>
+                                <span class="project-tech-badge">SQLite</span>
+                                <span class="project-tech-badge">Vanilla JS</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-info-stat">📚 Attendance | Analytics Dashboard</span>
+                            <a href="https://github.com/Mohith1-stack/TechBuddies" target="_blank" class="project-link-btn">
+                                Repo ➜
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 5 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="loan-approval" style="animation-delay: 0.1s;">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">AI / ML</span>
+                                <span class="project-sub">Streamlit & Scikit</span>
+                            </div>
+                            <h3 class="project-title">Loan Approval Predictor</h3>
+                            <p class="project-slogan">"Helping financial institutions make smarter decisions."</p>
+                            <p class="project-desc">Risk indexing machine learning platform checking assets, credit limits, incomes, and statuses to predict loan approval probability.</p>
+                            <div class="project-tags">
+                                <span class="project-tech-badge">Python</span>
+                                <span class="project-tech-badge">Scikit-Learn</span>
+                                <span class="project-tech-badge">Streamlit</span>
+                                <span class="project-tech-badge">Pandas</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-info-stat">🏦 Risk Analysis | ML Pipeline</span>
+                            <a href="https://github.com/Mohith1-stack/AI-Loan-Approval-Prediction" target="_blank" class="project-link-btn">
+                                Repo ➜
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 6 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="civicsense" style="animation-delay: 0.2s;">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">AI / Civic Tech</span>
+                                <span class="project-sub">Flask & Maps</span>
+                            </div>
+                            <h3 class="project-title">CivicSense-AI</h3>
+                            <p class="project-slogan">"Empowering citizens through civic intelligence."</p>
+                            <p class="project-desc">Public concerns reporting portal sorting issue files via NLP, rendering maps overlays, and connecting reports to local boards.</p>
+                            <div class="project-tags">
+                                <span class="project-tech-badge">Python</span>
+                                <span class="project-tech-badge">Flask</span>
+                                <span class="project-tech-badge">NLP Classifier</span>
+                                <span class="project-tech-badge">SQLite</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-info-stat">🏙️ Smart Governance | Citizen App</span>
+                            <a href="https://github.com/Mohith1-stack/CivicSense-AI" target="_blank" class="project-link-btn">
+                                Repo ➜
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 7 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="skillbridge">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">AI / SaaS</span>
+                                <span class="project-sub">MERN Stack</span>
+                            </div>
+                            <h3 class="project-title">SkillBridge AI</h3>
+                            <p class="project-slogan">"Connecting clients and freelancers with intelligent AI."</p>
+                            <p class="project-desc">AI freelance matching portal featuring resume ATS scanners, matching scoring multipliers, Stripe checkout endpoints, and messaging boards.</p>
+                            <div class="project-tags">
+                                <span class="project-tech-badge">React.js</span>
+                                <span class="project-tech-badge">Node.js</span>
+                                <span class="project-tech-badge">MongoDB</span>
+                                <span class="project-tech-badge">OpenAI API</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-info-stat">💼 ATS Resume | AI Matching</span>
+                            <a href="https://github.com/Mohith1-stack/AI-Powered-Freelance-Marketplace" target="_blank" class="project-link-btn">
+                                Repo ➜
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 8 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="spotify" style="animation-delay: 0.1s;">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">Full Stack</span>
+                                <span class="project-sub">MERN & Audio</span>
+                            </div>
+                            <h3 class="project-title">Spotify Clone</h3>
+                            <p class="project-slogan">"Your music, playlists, and artists—all in one place."</p>
+                            <p class="project-desc">Spotify-inspired audio streamer app with active buffering player, custom library playlist builder, JWT session grids, and Cloudinary media buckets.</p>
+                            <div class="project-tags">
+                                <span class="project-tech-badge">React.js</span>
+                                <span class="project-tech-badge">Node.js</span>
+                                <span class="project-tech-badge">MongoDB</span>
+                                <span class="project-tech-badge">Cloudinary</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-info-stat">🎵 Music Streaming | Playlists</span>
+                            <a href="https://github.com/Mohith1-stack/Spotify-Clone" target="_blank" class="project-link-btn">
+                                Repo ➜
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- GitHub Stats Section -->
-    <section id="github-stats" class="py-24 bg-[#0f0f0f] border-t border-gray-900">
-        <div class="container mx-auto px-6">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">GitHub Stats</h2>
-                <div class="section-divider"></div>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto mt-6">
-                    A summary of my code contributions, top languages, and programming consistency.
-                </p>
-            </div>
-
-            <!-- Stats Grid -->
-            <div class="flex flex-col gap-8 max-w-5xl mx-auto items-center justify-center">
-                <!-- Row 1: General Stats and Top Languages -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                    <div
-                        class="card p-6 flex justify-center items-center hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all duration-300">
-                        <img class="max-w-full"
-                            src="https://github-readme-stats.vercel.app/api?username=Mohith1-stack&show_icons=true&theme=tokyonight"
-                            alt="Mohith's GitHub Stats" />
-                    </div>
-                    <div
-                        class="card p-6 flex justify-center items-center hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all duration-300">
-                        <img class="max-w-full"
-                            src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mohith1-stack&layout=compact&theme=tokyonight"
-                            alt="Top Languages" />
-                    </div>
+        <!-- Achievements Section -->
+        <section id="achievements" style="background: rgba(3, 7, 18, 0.5);">
+            <div class="container">
+                <div class="section-title-wrapper fade-in-scroll">
+                    <h2 class="section-title">Achievements</h2>
+                    <p class="section-desc">Roadmap of certifications and verified technical capabilities.</p>
                 </div>
-                <!-- Row 2: GitHub Streak -->
-                <div
-                    class="w-full card p-6 flex justify-center items-center hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all duration-300">
-                    <img class="max-w-full"
-                        src="https://github-readme-streak-stats.herokuapp.com/?user=Mohith1-stack&theme=tokyonight"
-                        alt="GitHub Streak" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Connect / Let's Build Section -->
-    <section id="connect" class="py-24 bg-[#0a0a0a] border-t border-gray-900">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Let's Build Something Great</h2>
-            <div class="section-divider mb-8"></div>
-
-            <p class="text-xl text-blue-400 italic max-w-2xl mx-auto mb-4 font-medium">
-                Open to AI/ML engineering roles, internships, hackathons, and exciting collaborations.
-            </p>
-            <p class="text-lg text-gray-400 mb-12">
-                Let's build something impactful together.
-            </p>
-
-            <!-- Badges Flex -->
-            <div class="flex flex-wrap justify-center items-center gap-4 mb-12">
-
-                <a href="https://www.linkedin.com/in/mohith-dande-01b58a371/" target="_blank" rel="noopener noreferrer"
-                    class="hover:scale-105 transition-transform duration-350">
-                    <img src="https://img.shields.io/badge/◇%20LINKEDIN-1E3A8A?style=for-the-badge&logo=linkedin&logoColor=white"
-                        alt="LinkedIn Badge" />
-                </a>
-                <a href="https://github.com/Mohith1-stack" target="_blank" rel="noopener noreferrer"
-                    class="hover:scale-105 transition-transform duration-350">
-                    <img src="https://img.shields.io/badge/◇%20GITHUB-2F4F75?style=for-the-badge&logo=github&logoColor=white"
-                        alt="GitHub Badge" />
-                </a>
-                <a href="mailto:mohithdande3@gmail.com" class="hover:scale-105 transition-transform duration-350">
-                    <img src="https://img.shields.io/badge/◇%20EMAIL-0A0F1C?style=for-the-badge&logo=gmail&logoColor=white"
-                        alt="Email Badge" />
-                </a>
-            </div>
-
-            <!-- Profile Views -->
-            <div class="flex justify-center items-center mt-6">
-                <img src="https://komarev.com/ghpvc/?username=Mohith1-stack&label=PROFILE+VIEWS&color=4c6c91&style=for-the-badge"
-                    alt="Profile Views" />
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-[#0f0f0f]">
-        <div class="container mx-auto px-6">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Get In Touch</h2>
-                <div class="section-divider"></div>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto mt-6">
-                    Have a question or want to work together? Feel free to reach out!
-                </p>
-            </div>
-
-            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-                <!-- Contact Info -->
-                <div class="space-y-6">
-                    <!-- Email -->
-                    <div class="card">
-                        <div class="flex items-center gap-4">
-                            <div class="p-3 bg-gray-800 rounded-lg">
-                                <svg width="24" height="24" fill="none" stroke="#60a5fa" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 text-sm mb-1">Email</p>
-                                <a href="mailto:mohithdande3@gmail.com" class="text-white hover:text-blue-400
-                                    transition-colors">
-                                    mohithdande3@gmail.com
-                                </a>
-                            </div>
+                
+                <div class="timeline-container">
+                    <!-- Timeline Node 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-badge"></div>
+                        <div class="glass-panel timeline-panel fade-in-scroll">
+                            <div class="timeline-date">Verified Skill Certificate</div>
+                            <h3 class="timeline-title">Python Basics</h3>
+                            <div class="timeline-subtitle">HackerRank Certification</div>
+                            <p class="timeline-body">Demonstrates deep core language mastery, coverage of loops, complex array list mappings, class inheritance properties, and standard library implementations.</p>
+                            <a href="https://www.hackerrank.com/certificates/60427d611f8e" target="_blank" class="btn btn-secondary">
+                                Verify Badge
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Phone -->
-                    <div class="card">
-                        <div class="flex items-center gap-4">
-                            <div class="p-3 bg-gray-800 rounded-lg">
-                                <svg width="24" height="24" fill="none" stroke="#60a5fa" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0
-                                        1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84
-                                        12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0
-                                        0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 text-sm mb-1">Phone</p>
-                                <a href="tel:9985124955" class="text-white hover:text-blue-400 transition-colors">
-                                    9985124955
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- LinkedIn -->
-                    <div class="card">
-                        <div class="flex items-center gap-4">
-                            <div class="p-3 bg-gray-800 rounded-lg">
-                                <svg width="24" height="24" fill="none" stroke="#60a5fa" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1
-                                        6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 text-sm mb-1">LinkedIn</p>
-                                <a href="https://www.linkedin.com/in/mohith-dande-01b58a371/" target="_blank"
-                                    rel="noopener noreferrer" class="text-white hover:text-blue-400
-                                    transition-colors">
-                                    View Profile
-                                </a>
-                            </div>
+                    
+                    <!-- Timeline Node 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-badge"></div>
+                        <div class="glass-panel timeline-panel fade-in-scroll" style="animation-delay: 0.15s;">
+                            <div class="timeline-date">Verified Skill Certificate</div>
+                            <h3 class="timeline-title">Programming Basics</h3>
+                            <div class="timeline-subtitle">HackerRank Certification</div>
+                            <p class="timeline-body">Validates algorithm structural knowledge, foundational logical loops, data structure schemas, and code optimization parameters.</p>
+                            <a href="https://www.hackerrank.com/certificates/281d01e8693b" target="_blank" class="btn btn-secondary">
+                                Verify Badge
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Contact Form -->
-                <div class="card p-8">
-                    <form id="contact-form" action="https://formsubmit.co/mohithdande3@gmail.com" method="POST"
-                        class="space-y-6">
-                        <div>
-                            <label for="name" class="text-white mb-2 block">Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Your name">
+        <!-- GitHub Stats Section -->
+        <section id="github">
+            <div class="container">
+                <div class="section-title-wrapper fade-in-scroll">
+                    <h2 class="section-title">GitHub Insights</h2>
+                    <p class="section-desc">Code tracking details, language summaries, and daily check-in histories.</p>
+                </div>
+                
+                <div class="stats-grid fade-in-scroll">
+                    <div class="stats-row-top">
+                        <div class="glass-panel stats-box">
+                            <img src="https://github-readme-stats.vercel.app/api?username=Mohith1-stack&show_icons=true&theme=tokyonight" alt="Mohith Dande Github Stats" loading="lazy" />
                         </div>
-
-                        <div>
-                            <label for="email" class="text-white mb-2 block">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        <div class="glass-panel stats-box">
+                            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mohith1-stack&layout=compact&theme=tokyonight" alt="Mohith Dande Top Languages" loading="lazy" />
                         </div>
-
-                        <div>
-                            <label for="message" class="text-white mb-2 block">Message</label>
-                            <textarea id="message" name="message" required rows="5"
-                                placeholder="Your message..."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary w-full">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="22" y1="2" x2="11" y2="13"></line>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                            </svg>
-                            Send Message
-                        </button>
-                    </form>
+                    </div>
+                    <div class="glass-panel streak-box">
+                        <img src="https://github-readme-streak-stats.herokuapp.com/?user=Mohith1-stack&theme=tokyonight" alt="Mohith Dande Code Streak" loading="lazy" style="width: 100%;" />
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="bg-[#0a0a0a] border-t border-gray-800 py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col items-center gap-6">
-                <!-- Social Links -->
-                <div class="flex gap-4">
-                    <a href="https://github.com/Mohith1-stack" target="_blank" rel="noopener noreferrer"
-                        class="social-icon">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207
-                                11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729
-                                1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304
-                                3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931
-                                0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301
-                                1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23
-                                3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807
-                                5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589
-                                8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </svg>
+        <!-- Social Connections -->
+        <section id="connect" style="background: rgba(3, 7, 18, 0.5); text-align: center;">
+            <div class="container">
+                <h2 class="section-title fade-in-scroll">Let's Build Together</h2>
+                <p class="section-desc fade-in-scroll">Open to cybersecurity roles, ML opportunities, hackathons, and software engineering internships.</p>
+                
+                <!-- Shield links -->
+                <div class="btn-group" style="justify-content: center; margin: 3rem 0; flex-wrap: wrap; gap: 1.25rem;" class="fade-in-scroll">
+                    <a href="https://www.linkedin.com/in/mohith-dande-01b58a371/" target="_blank" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="https://img.shields.io/badge/◇%20LINKEDIN-1E3A8A?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Profile">
                     </a>
-                    <a href="https://www.linkedin.com/in/mohith-dande-01b58a371/" target="_blank" rel="noopener
-                        noreferrer" class="social-icon">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239
-                                5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966
-                                0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75
-                                1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586
-                                7-2.777 7 2.476v6.759z" />
-                        </svg>
+                    <a href="https://github.com/Mohith1-stack" target="_blank" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="https://img.shields.io/badge/◇%20GITHUB-2F4F75?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Profile">
                     </a>
-                    <a href="mailto:mohithdande3@gmail.com" class="social-icon">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                        </svg>
+                    <a href="mailto:mohithdande3@gmail.com" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="https://img.shields.io/badge/◇%20EMAIL-0A0F1C?style=for-the-badge&logo=gmail&logoColor=white" alt="Direct Email">
                     </a>
                 </div>
+                
+                <!-- Live Profile Visitor Count -->
+                <div class="fade-in-scroll" style="display: inline-block;">
+                    <img src="https://komarev.com/ghpvc/?username=Mohith1-stack&label=PROFILE+VIEWS&color=4c6c91&style=for-the-badge" alt="Mohith Dande Profile Views" />
+                </div>
+            </div>
+        </section>
 
-                <!-- Copyright -->
-                <p class="text-gray-500 text-sm">
-                    © 2025 Mohith Dande. All rights reserved.
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-title-wrapper fade-in-scroll">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-desc">Submit the form below or reach out directly via my verified contacts.</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <!-- Info links -->
+                    <div class="contact-info-panel fade-in-scroll">
+                        <div class="glass-panel contact-card-item">
+                            <div class="contact-card-icon">📧</div>
+                            <div class="contact-card-content">
+                                <h4>Email Address</h4>
+                                <a href="mailto:mohithdande3@gmail.com">mohithdande3@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-panel contact-card-item">
+                            <div class="contact-card-icon">📞</div>
+                            <div class="contact-card-content">
+                                <h4>Phone Contact</h4>
+                                <a href="tel:9985124955">9985124955</a>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-panel contact-card-item">
+                            <div class="contact-card-icon">💼</div>
+                            <div class="contact-card-content">
+                                <h4>LinkedIn Networking</h4>
+                                <a href="https://www.linkedin.com/in/mohith-dande-01b58a371/" target="_blank">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Form input fields -->
+                    <div class="glass-panel contact-form-panel fade-in-scroll" style="animation-delay: 0.15s;">
+                        <form id="contact-form" action="https://formsubmit.co/mohithdande3@gmail.com" method="POST">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" class="form-input" required placeholder=" ">
+                                <label for="name" class="form-label">Full Name</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" class="form-input" required placeholder=" ">
+                                <label for="email" class="form-label">Email Address</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea id="message" name="message" class="form-input form-textarea" required placeholder=" "></textarea>
+                                <label for="message" class="form-label">Message Details</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                Send Secure Message ➜
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container footer-content">
+                <div class="footer-logo">
+                    &lt;Mohith Dande/&gt;
+                </div>
+                <div class="footer-socials">
+                    <a href="https://github.com/Mohith1-stack" target="_blank" class="footer-social-link" aria-label="GitHub Profile">GH</a>
+                    <a href="https://www.linkedin.com/in/mohith-dande-01b58a371/" target="_blank" class="footer-social-link" aria-label="LinkedIn Profile">LN</a>
+                    <a href="mailto:mohithdande3@gmail.com" class="footer-social-link" aria-label="Send Email">✉</a>
+                </div>
+                <p class="footer-copyright">
+                    © 2026 Mohith Dande. All Rights Reserved. Built with custom Vanilla CSS & JS.
                 </p>
             </div>
+        </footer>
+    </div>
+
+    <!-- Project overlay details overlay screen -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="glass-panel modal-container">
+            <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal">×</button>
+            <span id="modal-project-tag" class="modal-project-tag">Tag</span>
+            <h3 id="modal-project-title" class="modal-project-title">Project Title</h3>
+            <p id="modal-project-slogan" class="modal-project-slogan">Project Slogan</p>
+            
+            <div id="modal-project-body" class="modal-project-body">
+                <!-- Project details parsed from JS database -->
+            </div>
+            
+            <div style="margin-top: 1rem;">
+                <h4 style="font-family: var(--font-heading); font-size: 1rem; margin-bottom: 0.5rem;">Tech Stack Built With:</h4>
+                <div id="modal-project-tech" class="modal-project-tech">
+                    <!-- Tech tags loaded -->
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <a href="#" id="modal-repo-btn" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.4rem; font-size: 0.9rem;">
+                    GitHub Repository ➜
+                </a>
+            </div>
         </div>
-    </footer>
+    </div>
 
-    <!-- JavaScript -->
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function () {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', function () {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function () {
-                mobileMenu.classList.remove('active');
-            });
-        });
-
-        // Contact form submission
-        const contactForm = document.getElementById('contact-form');
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const submitBtnText = submitBtn.innerHTML;
-
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Disable button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `
-                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Sending...
-            `;
-
-            // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            // FormSubmit AJAX request
-            fetch("https://formsubmit.co/ajax/mohithdande3@gmail.com", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    message: message,
-                    _subject: "New Message from Portfolio Website",
-                    _captcha: "false" // Disable captcha for a smoother experience
-                })
-            })
-                .then(response => {
-                    if (response.ok) {
-                        showToast("Message Sent!", "Thank you for reaching out. I'll get back to you soon!");
-                        contactForm.reset();
-                    } else {
-                        return response.json().then(data => {
-                            throw new Error(data.message || "Failed to send message.");
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error("Error submitting form:", error);
-                    showToast("Submission Failed", error.message || "Something went wrong. Please try again later.");
-                })
-                .finally(() => {
-                    // Re-enable button and restore original text
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = submitBtnText;
-                });
-        });
-
-        // Toast notification function
-        function showToast(title, message) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerHTML = `
-                <div class="font-bold mb-1">${title}</div>
-                <div class="text-sm text-gray-400">${message}</div>
-            `;
-
-            document.body.appendChild(toast);
-
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.removeChild(toast);
-                }, 300);
-            }, 3000);
-        }
-
-        // Smooth scroll for all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
