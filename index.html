@@ -332,7 +332,8 @@
 
                 <!-- Description -->
                 <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in-up delay-100">
-                    B.Tech CSE Cyber Security Student at Amrita Vishwa Vidyapeetham | AI & ML Enthusiast | Future AI
+                    B.Tech CSE Cyber Security Student at Amrita Vishwa Vidyapeetham, Amritapuri, Kerala | AI & ML
+                    Enthusiast | Future AI
                     Engineer
                 </p>
 
@@ -402,7 +403,8 @@
                             <li class="flex items-start gap-3">
                                 <span class="text-blue-500 mt-1 text-lg">✦</span>
                                 <p class="text-gray-300 text-lg leading-relaxed">
-                                    Cyber Security Student at <strong>Amrita Vishwa Vidyapeetham</strong>
+                                    Cyber Security Student at <strong>Amrita Vishwa Vidyapeetham, Amritapuri,
+                                        Kerala</strong>
                                 </p>
                             </li>
                             <li class="flex items-start gap-3">
@@ -1125,11 +1127,7 @@
 
             <!-- Badges Flex -->
             <div class="flex flex-wrap justify-center items-center gap-4 mb-12">
-                <a href="https://mohith1-stack.github.io/" target="_blank" rel="noopener noreferrer"
-                    class="hover:scale-105 transition-transform duration-350">
-                    <img src="https://img.shields.io/badge/◇%20PORTFOLIO-0A0F1C?style=for-the-badge&logoColor=white"
-                        alt="Portfolio Badge" />
-                </a>
+
                 <a href="https://www.linkedin.com/in/mohith-dande-01b58a371/" target="_blank" rel="noopener noreferrer"
                     class="hover:scale-105 transition-transform duration-350">
                     <img src="https://img.shields.io/badge/◇%20LINKEDIN-1E3A8A?style=for-the-badge&logo=linkedin&logoColor=white"
@@ -1236,7 +1234,8 @@
 
                 <!-- Contact Form -->
                 <div class="card p-8">
-                    <form id="contact-form" class="space-y-6">
+                    <form id="contact-form" action="https://formsubmit.co/mohithdande3@gmail.com" method="POST"
+                        class="space-y-6">
                         <div>
                             <label for="name" class="text-white mb-2 block">Name</label>
                             <input type="text" id="name" name="name" required placeholder="Your name">
@@ -1344,22 +1343,61 @@
 
         // Contact form submission
         const contactForm = document.getElementById('contact-form');
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const submitBtnText = submitBtn.innerHTML;
 
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending...
+            `;
+
             // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
 
-            // Show toast notification
-            showToast("Message Sent!", "Thank you for reaching out. I'll get back to you soon!");
-
-            // Reset form
-            contactForm.reset();
+            // FormSubmit AJAX request
+            fetch("https://formsubmit.co/ajax/mohithdande3@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message,
+                    _subject: "New Message from Portfolio Website",
+                    _captcha: "false" // Disable captcha for a smoother experience
+                })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showToast("Message Sent!", "Thank you for reaching out. I'll get back to you soon!");
+                        contactForm.reset();
+                    } else {
+                        return response.json().then(data => {
+                            throw new Error(data.message || "Failed to send message.");
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Error submitting form:", error);
+                    showToast("Submission Failed", error.message || "Something went wrong. Please try again later.");
+                })
+                .finally(() => {
+                    // Re-enable button and restore original text
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = submitBtnText;
+                });
         });
 
         // Toast notification function
