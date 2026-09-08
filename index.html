@@ -272,21 +272,74 @@
             <div class="container">
                 <div class="section-title-wrapper fade-in-scroll">
                     <h2 class="section-title">Projects</h2>
-                    <p class="section-desc">A gallery of academic and personal projects in AI, Full-Stack and Security.</p>
+                    <p class="section-desc">A collection of my strongest projects across AI, intelligent systems, full-stack engineering, developer tooling, and security.</p>
                 </div>
-                
+
                 <!-- Filter Tabs -->
                 <div class="projects-filter-bar fade-in-scroll">
                     <button class="filter-btn active" data-filter="all">All Projects</button>
                     <button class="filter-btn" data-filter="ai-ml">AI & ML</button>
                     <button class="filter-btn" data-filter="fullstack">Full Stack & Web</button>
-                    <button class="filter-btn" data-filter="cyber-mobile">Mobile & Security</button>
+                    <button class="filter-btn" data-filter="cyber-mobile">Security & Developer Tools</button>
                 </div>
-                
+
                 <!-- Grid list -->
                 <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="placement-predictor">
+
+                    <!-- Project 1 - Featured -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="optima-truck">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">AI / Logistics</span>
+                                <span class="project-sub">Matching Engine</span>
+                            </div>
+                            <h3 class="project-title">Optima-Truck</h3>
+                            <p class="project-slogan">"Turning empty return trips into intelligent logistics opportunities."</p>
+                            <p class="project-desc">An intelligent predictive logistics platform designed to solve the "Empty Truck Problem" by optimizing return trips, eliminating deadhead miles, matching loads with available trucks, and supporting NGO and humanitarian aid transport.</p>
+                            <div class="project-tags">
+                                <span class="project-tech-badge">TypeScript</span>
+                                <span class="project-tech-badge">React</span>
+                                <span class="project-tech-badge">Supabase</span>
+                                <span class="project-tech-badge">PostgreSQL</span>
+                                <span class="project-tech-badge">Leaflet</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-info-stat">🚛 Deadhead Reduction | Real-time Matching</span>
+                            <a href="https://github.com/Mohith1-stack/Empty-truck" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                                Repo ➜
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 - Featured -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="cyber-mobile" data-project-id="tracesieve" style="animation-delay: 0.1s;">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">DevTools / Analysis</span>
+                                <span class="project-sub">sys.settrace & AST</span>
+                            </div>
+                            <h3 class="project-title">TraceSieve</h3>
+                            <p class="project-slogan">"Turn program execution into evidence you can explain and compare."</p>
+                            <p class="project-desc">A zero-dependency Python analysis tool that converts program execution into an explainable evidence trail, compares behavior across scenarios, and reveals unexpected execution paths and gaps between static code and actual runtime behavior.</p>
+                            <div class="project-tags">
+                                <span class="project-tech-badge">Python</span>
+                                <span class="project-tech-badge">AST</span>
+                                <span class="project-tech-badge">sys.settrace</span>
+                                <span class="project-tech-badge">SQLite</span>
+                                <span class="project-tech-badge">Standard Library</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-info-stat">🔬 Runtime Evidence | Scenario Diff</span>
+                            <a href="https://github.com/Mohith1-stack/TraceSieve" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                                Repo ➜
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="placement-predictor" style="animation-delay: 0.2s;">
                         <div>
                             <div class="project-meta">
                                 <span class="project-tag">AI / ML</span>
@@ -304,14 +357,14 @@
                         </div>
                         <div class="project-footer">
                             <span class="project-info-stat">📊 XAI Dashboard | 10k+ Records</span>
-                            <a href="https://github.com/Mohith1-stack/AI-Student-Placement-Predictor" target="_blank" class="project-link-btn">
+                            <a href="https://github.com/Mohith1-stack/AI-Student-Placement-Predictor" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                                 Repo ➜
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Project 2 -->
-                    <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="netflix-recommendation" style="animation-delay: 0.1s;">
+
+                    <!-- Project 4 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="netflix-recommendation" style="animation-delay: 0.3s;">
                         <div>
                             <div class="project-meta">
                                 <span class="project-tag">AI / NLP</span>
@@ -329,14 +382,14 @@
                         </div>
                         <div class="project-footer">
                             <span class="project-info-stat">🎥 TMDB API | Content Based</span>
-                            <a href="https://github.com/Mohith1-stack/Netflix-Recommendation-System" target="_blank" class="project-link-btn">
+                            <a href="https://github.com/Mohith1-stack/Netflix-Recommendation-System" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                                 Repo ➜
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Project 3 -->
-                    <div class="glass-panel project-card fade-in-scroll" data-category="cyber-mobile" data-project-id="guardian-path" style="animation-delay: 0.2s;">
+
+                    <!-- Project 5 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="cyber-mobile" data-project-id="guardian-path" style="animation-delay: 0.4s;">
                         <div>
                             <div class="project-meta">
                                 <span class="project-tag">Mobile / Security</span>
@@ -354,14 +407,14 @@
                         </div>
                         <div class="project-footer">
                             <span class="project-info-stat">🌙 Night Agent | Risk Detection</span>
-                            <a href="https://github.com/Mohith1-stack/Code-Chaos" target="_blank" class="project-link-btn">
+                            <a href="https://github.com/Mohith1-stack/Code-Chaos" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                                 Repo ➜
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Project 4 -->
-                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="techbuddies">
+
+                    <!-- Project 6 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="techbuddies" style="animation-delay: 0.5s;">
                         <div>
                             <div class="project-meta">
                                 <span class="project-tag">Web App</span>
@@ -379,14 +432,14 @@
                         </div>
                         <div class="project-footer">
                             <span class="project-info-stat">📚 Attendance | Analytics Dashboard</span>
-                            <a href="https://github.com/Mohith1-stack/TechBuddies" target="_blank" class="project-link-btn">
+                            <a href="https://github.com/Mohith1-stack/TechBuddies" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                                 Repo ➜
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Project 5 -->
-                    <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="loan-approval" style="animation-delay: 0.1s;">
+
+                    <!-- Project 7 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="loan-approval" style="animation-delay: 0.6s;">
                         <div>
                             <div class="project-meta">
                                 <span class="project-tag">AI / ML</span>
@@ -404,14 +457,14 @@
                         </div>
                         <div class="project-footer">
                             <span class="project-info-stat">🏦 Risk Analysis | ML Pipeline</span>
-                            <a href="https://github.com/Mohith1-stack/AI-Loan-Approval-Prediction" target="_blank" class="project-link-btn">
+                            <a href="https://github.com/Mohith1-stack/AI-Loan-Approval-Prediction" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                                 Repo ➜
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Project 6 -->
-                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="civicsense" style="animation-delay: 0.2s;">
+
+                    <!-- Project 8 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="civicsense" style="animation-delay: 0.7s;">
                         <div>
                             <div class="project-meta">
                                 <span class="project-tag">AI / Civic Tech</span>
@@ -429,14 +482,14 @@
                         </div>
                         <div class="project-footer">
                             <span class="project-info-stat">🏙️ Smart Governance | Citizen App</span>
-                            <a href="https://github.com/Mohith1-stack/CivicSense-AI" target="_blank" class="project-link-btn">
+                            <a href="https://github.com/Mohith1-stack/CivicSense-AI" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                                 Repo ➜
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Project 7 -->
-                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="skillbridge">
+
+                    <!-- Project 9 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="skillbridge" style="animation-delay: 0.8s;">
                         <div>
                             <div class="project-meta">
                                 <span class="project-tag">AI / SaaS</span>
@@ -444,7 +497,7 @@
                             </div>
                             <h3 class="project-title">SkillBridge AI</h3>
                             <p class="project-slogan">"Connecting clients and freelancers with intelligent AI."</p>
-                            <p class="project-desc">AI freelance matching portal featuring resume ATS scanners, matching scoring multipliers, Stripe checkout endpoints, and messaging boards.</p>
+                            <p class="project-desc">AI freelance matching portal featuring resume ATS scanners, matching scoring multipliers, secure checkout endpoints, and real-time messaging.</p>
                             <div class="project-tags">
                                 <span class="project-tech-badge">React.js</span>
                                 <span class="project-tech-badge">Node.js</span>
@@ -454,14 +507,14 @@
                         </div>
                         <div class="project-footer">
                             <span class="project-info-stat">💼 ATS Resume | AI Matching</span>
-                            <a href="https://github.com/Mohith1-stack/AI-Powered-Freelance-Marketplace" target="_blank" class="project-link-btn">
+                            <a href="https://github.com/Mohith1-stack/AI-Powered-Freelance-Marketplace" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                                 Repo ➜
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Project 8 -->
-                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="spotify" style="animation-delay: 0.1s;">
+
+                    <!-- Project 10 -->
+                    <div class="glass-panel project-card fade-in-scroll" data-category="fullstack" data-project-id="spotify" style="animation-delay: 0.9s;">
                         <div>
                             <div class="project-meta">
                                 <span class="project-tag">Full Stack</span>
@@ -479,11 +532,12 @@
                         </div>
                         <div class="project-footer">
                             <span class="project-info-stat">🎵 Music Streaming | Playlists</span>
-                            <a href="https://github.com/Mohith1-stack/Spotify-Clone" target="_blank" class="project-link-btn">
+                            <a href="https://github.com/Mohith1-stack/Spotify-Clone" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                                 Repo ➜
                             </a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
