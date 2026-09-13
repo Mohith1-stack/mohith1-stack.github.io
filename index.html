@@ -338,48 +338,57 @@
                         </div>
                     </div>
 
-                    <!-- Project 3 -->
-                    <div className="project-card">
-                        <div className="project-top">
-                            <span className="project-category">CYBERSECURITY / AI</span>
-                            <span className="project-model">Tri-Modal Deep Learning</span>
-                        </div>
-                        <h2 className="project-title">AEGIS
-                            <br />
-                            Microarchitectural
-                            <br />
-                            Forensics & Containment
-                        </h2>
-                        <p className="project-tagline">"Detect side-channel attacks.
-                            <br />
-                            Contain them at the hardware level."
-                        </p>
-                        <p className="project-description">
-                            Real-time cybersecurity framework detecting CPU microarchitectural
-                            side-channel attacks using kernel PMU telemetry, eBPF, and
-                            multi-modal deep learning, with automated hardware-level containment.
-                        </p>
-                        <div className="project-tags">
-                            <span>Python</span>
-                            <span>PyTorch</span>
-                            <span>eBPF</span>
-                            <span>CNN + Bi-LSTM</span>
-                        </div>
-                        <div className="project-divider" />
-                            <div className="project-bottom">
-                                <div className="project-metrics">
-                                    <span>🛡️ 99.33% Accuracy</span>
-                                    <span>⚡ 1.29ms Latency</span>
-                                </div>
-                                <a
-                                    href="https://github.com/Mohith1-stack/Aegis-LLC"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="project-repo">
-                                    Repo →
-                                </a>
+                    <!-- Project 3 - Featured -->
+                    <div class="glass-panel project-card fade-in-scroll"
+                         data-category="cyber-mobile"
+                         data-project-id="aegis"
+                         style="animation-delay: 0.2s;">
+                        <div>
+                            <div class="project-meta">
+                                <span class="project-tag">Cybersecurity / AI</span>
+                                <span class="project-sub">Tri-Modal Deep Learning</span>
+                            </div>
+
+                            <h3 class="project-title">
+                                AEGIS — Microarchitectural Forensics
+                            </h3>
+
+                            <p class="project-slogan">
+                                "Detect side-channel attacks. Contain them at the hardware level."
+                            </p>
+
+                            <p class="project-desc">
+                                Real-time cybersecurity framework detecting CPU microarchitectural
+                                side-channel attacks using kernel PMU telemetry, eBPF, and
+                                multi-modal deep learning, with automated hardware-level containment.
+                            </p>
+
+                            <div class="project-tags">
+                                <span class="project-tech-badge">Python</span>
+                                <span class="project-tech-badge">PyTorch</span>
+                                <span class="project-tech-badge">eBPF</span>
+                                <span class="project-tech-badge">CNN</span>
+                                <span class="project-tech-badge">Bi-LSTM</span>
+                                <span class="project-tech-badge">Intel RDT / AMD QoS</span>
                             </div>
                         </div>
+
+                        <div class="project-footer">
+                            <span class="project-info-stat">
+                                🛡️ 99.33% Accuracy | ⚡ 1.29ms Latency
+                            </span>
+
+                            <a
+                                href="https://github.com/Mohith1-stack/Aegis-LLC"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link-btn"
+                            >
+                                Repo ➜
+                            </a>
+                        </div>
+                    </div>
+
                     <!--Project-4-->
                     <div class="glass-panel project-card fade-in-scroll" data-category="ai-ml" data-project-id="placement-predictor" style="animation-delay: 0.2s;">
                         <div>
@@ -854,6 +863,3 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
-</body>
-
-</html>
